@@ -14,7 +14,7 @@
 
 ### 与本期视频相关教程
 
- Vultr 注册：https://www.vultr.com/?ref=8941832-8H
+本期合作 VPS 六六云：https://bit.ly/3hBENuF
 
 域名注册教程：https://youtu.be/2uJQdWpM46k
 

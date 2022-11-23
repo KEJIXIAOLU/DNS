@@ -1,43 +1,57 @@
-# 科学上网：VPS 搭建 X-UI 面板，利用 DNS 申请证书
+# 科学上网：VPS 搭建 X-ui 面板，利用 DNS 申请证书
 
-## 使用X-UI搭建代理服务，具有以下优点：
+## 使用 X-ui 搭建代理服务，具有以下优点：
 
-- 支持系统状态监控：如CPU、内存、硬盘等状态
+- 支持系统状态监控：如 CPU、内存、硬盘等状态
 - 支持多用户多协议，网页可视化操作
 - 支持流量统计
-- 支持自定义Xray配置模板
+- 支持自定义 Xray 配置模板
 - 支持HTTPS访问面板
 - 支持面板自定义端口，账号与密码
 - 快速生成分享连接或二维码
-- 支持CDN套用
-- 支持Fallback分流设置
+- 支持 CDN 套用
+- 支持 Fallback 分流设置
 
-## 一、 准备工作
+### 与本期视频相关教程
 
-- 1、已经解析的域名，Win+R 输入CMD 回车：键入ping 空格输入你的域名，检查一下是否可以ping通
-- 2、一台境外VPS主流系统，例如：Debian/Ubuntu/CentOS
-- 3、下载并安装FinalShell SSH工具
+ Vultr 注册：https://www.vultr.com/?ref=8941832-8H
 
-Windows版下载地址:
+域名注册教程：https://youtu.be/2uJQdWpM46k
+
+Cloudflare 接管域名教程：https://youtu.be/1GtDTWybJNM
+
+X-ui 搭建教程一：https://youtu.be/n5koU-pj094
+
+## 准备工作
+
+- 1、域名一个，托管到 Cloudflare （方法见上）
+
+- 2、VPS 一台，例如：Debian/Ubuntu/CentOS
+
+- 3、下载并安装 FinalShell SSH 工具
+
+Windows 版本下载地址:
 http://www.hostbuf.com/downloads/finalshell_install.exe
 
-macOS版下载地址:
+MacOS 版本下载地址:
 http://www.hostbuf.com/downloads/finalshell_install.pkg
 
-## 二、更新安装系统
+ 
+
+## 更新安装系统
 下面环境的安装方式，大家根据自己的系统选择命令安装就好了。
-### 1、Debian/Ubuntu系统执行以下命令：
+### 1、Debian/Ubuntu 系统执行以下命令：
     apt update -y         
     apt install -y curl    
     apt install -y socat    
     
-### 2、CentOS系统执行以下命令：   
+### 2、CentOS 系统执行以下命令：   
 
     yum update -y         
     yum install -y curl   
     yum install -y socat   
 
- ## 安装BBR加速
+ ## 安装 BBR 加速
  本脚本建议在Debian≥9或是CentOS≥8以上的系统中使用
  
     wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
@@ -51,6 +65,7 @@ http://www.hostbuf.com/downloads/finalshell_install.pkg
 
 在 VPS 输入<code> x-ui</code>  命令，进入 X-ui 的命令菜单
 选择 16，申请 SSL 的证书。（申请需要有 Cloudflare API ，可以 观看视频 获取 API）
+
 申请的时候是申请的泛域名证书，所以，填写域名的时候，只填入 域 也就好了，例如<code>  xxx.com</code>  的格式。
 
 申请成功以后，证书和密钥文件在 VPS 目录的<code> /root/cert </code>文件夹里面
@@ -63,7 +78,7 @@ http://www.hostbuf.com/downloads/finalshell_install.pkg
 -  重要：若是设置了 SSL证书以及密钥 ，再次登录需要输入 https://cs.kjxlu1.top:54321 访问，注意，是 https
  
  ## 添加科学上网节点
- 请看视频演示
- 
- 
- 
+ 这一步扩展性很强，大家可以根据自己的需求设置相关的节点规则。
+
+ ----------------
+这种 Xray 可视化管理面板 的方式，也是支持伪装网站以及多网站并存的，包括支持宝塔面板的搭建方式。

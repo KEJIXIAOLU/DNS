@@ -80,5 +80,9 @@ http://www.hostbuf.com/downloads/finalshell_install.pkg
  ## 添加科学上网节点
  这一步扩展性很强，大家可以根据自己的需求设置相关的节点规则。
 
+## 关于x-ui节点电脑V2ray能连接上，扫描导入手机V2rayNG连接不了？
+在 X-ui面板设置中，“面板证书公钥文件路径”，不要用带自己域名的证书，输入<code> /root/cert/fullchain.cer</code> （这是标准的CA证书集的文件之一）的路径。然后重启面板。在创建的节点时候，公钥文件路径同样填入 <code> /root/cert/fullchain.cer</code> 。
+这样设置之后，解决了问题： io read/write on closed pipe
+
  ----------------
 这种 Xray 可视化管理面板 的方式，也是支持伪装网站以及多网站并存的，包括支持宝塔面板的搭建方式。

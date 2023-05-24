@@ -59,23 +59,30 @@ http://www.hostbuf.com/downloads/finalshell_install.pkg
  ## 一键安装面板
     bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
  
- 完成 X-ui 安装以后，我们可以输入 VPSIP:端口（如1.1.1.1:12345） 登录 X-ui 的管理面板（可以登录代表安装成功）
+ 完成 X-ui 安装以后，我们可以输入 VPS IP:端口（如1.1.1.1:12345） 登录 X-ui 的管理面板（可以登录代表安装成功），登录不了请放行端口。
 
-## 利用 DNS 申请证书
+##  放行端口指令
+放行443端口:
 
-在 VPS 输入<code> x-ui</code>  命令，进入 X-ui 的命令菜单
+    iptables -I INPUT -p tcp --dport 443 -j ACCEPT
+  
+放行54321端口:
+
+    iptables -I INPUT -p tcp --dport 54321 -j ACCEPT
+  
+  
+## 申请 SSL 的证书
+
+输入命令 <code> x-ui</code>  ，进入 X-ui 的命令菜单
 选择 16，申请 SSL 的证书。（申请需要有 Cloudflare API ，可以 观看视频 获取 API）
 
 申请的时候是申请的泛域名证书，所以，填写域名的时候，只填入 域 也就好了，例如<code>  xxx.com</code>  的格式。
 
 申请成功以后，证书和密钥文件在 VPS 目录的<code> /root/cert </code>文件夹里面
 
-##  访问并设置 Xray 管理面板
-在浏览器中输入刚才解析的域名 cs.kjxlu1.top ，用户名 admin ，密码 admin
-
-修改必要的面板参数 SSL证书以及密钥（绝对地址）、面板端口、登录标题 等，其他若是你不清楚，请保持默认
-
--  重要：若是设置了 SSL证书以及密钥 ，再次登录需要输入 https://cs.kjxlu1.top:54321 访问，注意，是 https
+##  x-ui 管理面板设置
+添加证书和密钥路径，重启面板
+通过域名访问x-ui 管理面板：https://域名:54321
  
  ## 添加科学上网节点
  这一步扩展性很强，大家可以根据自己的需求设置相关的节点规则。
